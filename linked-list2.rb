@@ -9,7 +9,7 @@ class LinkedListNode
   end
 end
 
-#-----------------Class Stack Defined-----------------#
+#-----------------Challenge-----------------#
 
 class Stack
     attr_reader :data
@@ -18,36 +18,48 @@ class Stack
         @data = nil
     end
 
-    # Push a value onto the stack
+    
     def push(value)
         @data = LinkedListNode.new(value, @data)
     end
 
-    # Pop an item off the stack.
-    # Remove the last item that was pushed onto the
-    # stack and return the value to the user
     def pop
-        # I RETURN A VALUE
-
+       
     end
 
 end
 
 # ---------------Reverse List Function-------------- #
 
-def reverse_list(list)
+# def reverse_list(list)
   
-    stack = Stack.new
+#     stack = Stack.new
 
-    while list
+#     while list
         
-        stack.push(list.value)
-        list = list.next_node
+#         stack.push(list.value)
+#         list = list.next_node
+#     end
+
+#     # ADD CODE HERE
+#     stack.data
+# end
+
+def reverse_list(list, previous=nil)
+    
+    if !list
+      
+      previous
+
+    else
+
+      current_head = list.next_node
+      list.next_node = previous
+      reverse_list(current_head, list)
+
     end
 
-    # ADD CODE HERE
-    stack.data
-end
+  end
 
 #------------------Print Function-------------------#
 
@@ -81,3 +93,7 @@ puts "-------"
 revlist = reverse_list(node3)
 
 print_nodes(revlist)
+
+# node3.print_values(node3)
+# puts '------------------------'
+# node3.print_values(node3.reverse_list(node3))
